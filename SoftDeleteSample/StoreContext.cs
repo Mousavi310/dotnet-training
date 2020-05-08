@@ -16,14 +16,15 @@ namespace SoftDeleteSample
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Make sure we have unique product names
+            //This will make sure we have unique product names
             modelBuilder
                 .Entity<Product>()
                 .HasIndex(p => p.Name)
+                //This make index filtered
                 .HasFilter("IsDeleted = 0")
                 .IsUnique();
 
-            //Don't show deleted errors to my when querying Products using EF
+            //This will exclude products with IsDeleted=1 when querying Products using EF
             modelBuilder
                 .Entity<Product>()
                 .HasQueryFilter(p => !p.IsDeleted);
