@@ -6,9 +6,9 @@ namespace ConfigurationProviders.Samples.Controllers
 {
     public class HomeController : ControllerBase
     {
-        private readonly IOptions<EmailServiceOptions> _options;
+        private readonly IOptionsSnapshot<EmailServiceOptions> _options;
 
-        public HomeController(IOptions<EmailServiceOptions> options)
+        public HomeController(IOptionsSnapshot<EmailServiceOptions> options)
         {
             _options = options;
         }

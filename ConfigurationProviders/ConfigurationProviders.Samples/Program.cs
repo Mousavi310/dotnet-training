@@ -22,7 +22,8 @@ namespace ConfigurationProviders.Samples
                 .ConfigureAppConfiguration(builder =>
                     {
                         builder.AddSqlServer(
-                            "Server=localhost;Database=Example;User Id=sa;Password=your(#SecurePassword!123)");
+                            "Server=localhost;Database=Example;User Id=sa;Password=your(#SecurePassword!123)",
+                            TimeSpan.FromSeconds(5));
                     })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
